@@ -20,7 +20,6 @@
             --success: #28a745;
             --radius: 12px;
             --container: 1200px;
- --container: 1200px;
         }
 
         * {
@@ -182,55 +181,152 @@
             cursor: pointer;
         }
 
-        /* Hero */
+        /* Premium hero / front page */
         .hero {
+            position: relative;
+            isolation: isolate;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            min-height: 590px;
+            padding: 72px 20px;
+            overflow: hidden;
+            color: #fff;
+            border-radius: 0 0 32px 32px;
             background:
-                linear-gradient(180deg, rgba(10, 37, 64, 0.6), rgba(10, 37, 64, 0.6)),
-                url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-            color: white;
-            min-height: 420px;
-            padding: 56px 20px;
-            border-bottom-left-radius: var(--radius);
-            border-bottom-right-radius: var(--radius);
+                radial-gradient(circle at 78% 28%, rgba(0,212,255,.28), transparent 28%),
+                radial-gradient(circle at 15% 75%, rgba(111,76,255,.25), transparent 30%),
+                linear-gradient(120deg, #071827 0%, #0a2540 48%, #102f4d 100%);
         }
-
-        .hero h1 {
-            font-family: Poppins;
-            font-size: 40px;
-            margin: 0 0 12px;
-            letter-spacing: -0.02em;
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(4,18,31,.95) 0%, rgba(4,18,31,.78) 48%, rgba(4,18,31,.2) 100%),
+                url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+            opacity: .82;
         }
-
-        .hero p {
-            margin: 0 0 22px;
-            opacity: 0.95;
-            max-width: 820px;
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: -130px;
+            bottom: -170px;
+            border-radius: 50%;
+            background: rgba(0,212,255,.14);
+            filter: blur(8px);
+            z-index: -1;
         }
-
-        .btn {
+        .hero .container {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-copy { max-width: 700px; text-align: left; }
+        .eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 18px;
+            gap: 8px;
+            padding: 8px 13px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255,255,255,.18);
             border-radius: 999px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 0;
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(12px);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
         }
-
+        .hero h1 {
+            font-family: Poppins, sans-serif;
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.04;
+            margin: 0 0 18px;
+            letter-spacing: -.045em;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero p {
+            margin: 0 0 28px;
+            max-width: 650px;
+            color: rgba(255,255,255,.82);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+        .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
         .btn-primary {
-            background: var(--accent);
-            color: #042233;
+            box-shadow: 0 12px 30px rgba(0,212,255,.24);
+            transition: transform .2s ease, box-shadow .2s ease;
         }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(0,212,255,.34); }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            max-width: 590px;
+        }
+        .hero-stat {
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 14px;
+            background: rgba(255,255,255,.07);
+            backdrop-filter: blur(10px);
+        }
+        .hero-stat strong { display:block; font-size:20px; }
+        .hero-stat small { color: rgba(255,255,255,.65); }
+        .hero-showcase {
+            justify-self: end;
+            width: min(390px, 100%);
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 24px;
+            background: rgba(255,255,255,.1);
+            box-shadow: 0 30px 80px rgba(0,0,0,.28);
+            backdrop-filter: blur(14px);
+            transform: rotate(2deg);
+        }
+        .hero-showcase img {
+            width:100%; height:320px; object-fit:cover; display:block;
+            border-radius:17px;
+        }
+        .showcase-info {
+            display:flex; justify-content:space-between; gap:15px; align-items:center;
+            padding:14px 5px 2px;
+        }
+        .showcase-info strong { font-size:17px; }
+        .showcase-price { color:var(--accent); font-weight:800; font-size:20px; }
 
-        .btn-ghost {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.18);
-            color: white;
+        .section-title { font-family:Poppins,sans-serif; }
+        .section {
+            padding: 64px 0;
+        }
+        .title h2 { font-family:Poppins,sans-serif; font-size:30px; margin:0 0 7px; }
+        .cat-card, .product, .testimonial {
+            border: 1px solid rgba(10,37,64,.06);
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        }
+        .cat-card:hover, .product:hover, .testimonial:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 22px 45px rgba(10,37,64,.09);
+            border-color: rgba(0,212,255,.22);
+        }
+        .product { position:relative; }
+        .product img { background:#f3f6f8; }
+        .add-btn { transition: transform .15s ease, background .15s ease; }
+        .add-btn:hover { transform: translateY(-1px); background:#123b61; }
+        .deal {
+            border:1px solid rgba(0,212,255,.12);
+            box-shadow:0 20px 50px rgba(10,37,64,.06);
+        }
+        .newsletter {
+            background:
+                radial-gradient(circle at 90% 10%, rgba(0,212,255,.22), transparent 30%),
+                linear-gradient(135deg, #071827, #0a2540);
+            box-shadow:0 20px 50px rgba(10,37,64,.12);
         }
 
         /* Sections */
@@ -479,6 +575,22 @@
             }
         }
 
+
+        @media (max-width:900px) {
+            .hero .container { grid-template-columns:1fr; gap:35px; }
+            .hero-copy { text-align:center; margin:auto; }
+            .hero-actions, .hero-stats { justify-content:center; margin-left:auto; margin-right:auto; }
+            .hero-showcase { justify-self:center; transform:none; max-width:420px; }
+        }
+        @media (max-width:600px) {
+            .hero { min-height:640px; padding:55px 20px; border-radius:0 0 24px 24px; }
+            .hero h1 { font-size:44px; }
+            .hero p { font-size:15px; }
+            .hero-stats { grid-template-columns:1fr; }
+            .hero-showcase img { height:240px; }
+            .container > div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; }
+        }
+
         @media (max-width:600px) {
             .hero h1 {
                 font-size: 28px;
@@ -538,7 +650,7 @@
 
             <div style="display:flex;align-items:center;gap:14px;">
                 <div class="search" role="search" aria-label="Product search">
-                    <emnput type="search" id="searchInput" placeholder="Search products, categories..." aria-label="Search products" />
+                    <input type="search" id="searchInput" placeholder="Search products, categories..." aria-label="Search products" />
                     <button class="icon-btn" id="searchBtn" aria-label="Search"><em class="fas fa-search"></em></button>
                 </div>
 
@@ -570,15 +682,38 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="hero" role="img" aria-label="Hero banner">
+        <!-- Premium Hero -->
+        <section class="hero" aria-labelledby="hero-title">
             <div class="container">
-                <h1>New Winter Collection  Premium Picks</h1>
-                <p>Discover the latest trends in fashion, technology and accessories — curated just for you. Enjoy limited-time deals and free shipping on selected items.</p>
-                <div>
-                    <button class="btn btn-primary" id="shopNow">Shop Now <em class="fas fa-arrow-right"></em></button>
-                    <button class="btn btn-ghost" id="exploreDeals">Explore Deals</button>
+                <div class="hero-copy">
+                    <div class="eyebrow"><em class="fas fa-sparkles"></em> New season • curated for you</div>
+                    <h1 id="hero-title">Shop smarter.<br><span>Live better.</span></h1>
+                    <p>Discover premium tech, fashion and everyday essentials in one beautiful shopping experience — with fresh arrivals, member-worthy deals and fast delivery.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="shopNow">Explore Collection <em class="fas fa-arrow-right"></em></button>
+                        <button class="btn btn-ghost" id="exploreDeals"><em class="fas fa-bolt"></em> View Flash Sale</button>
+                    </div>
+                    <div class="hero-stats" aria-label="Shopping highlights">
+                        <div class="hero-stat"><strong>10K+</strong><small>Happy shoppers</small></div>
+                        <div class="hero-stat"><strong>4.9/5</strong><small>Customer rating</small></div>
+                        <div class="hero-stat"><strong>24h</strong><small>Fast dispatch</small></div>
+                    </div>
                 </div>
+                <div class="hero-showcase">
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=85" alt="Premium laptop collection">
+                    <div class="showcase-info">
+                        <div><strong>Premium Tech Picks</strong><br><small style="opacity:.7">Performance meets style</small></div>
+                        <div class="showcase-price">Up to 30% off</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="margin-top:-28px;position:relative;z-index:3;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;background:#fff;border:1px solid rgba(10,37,64,.07);border-radius:18px;padding:18px;box-shadow:0 18px 45px rgba(10,37,64,.09);">
+                <div style="display:flex;gap:12px;align-items:center;"><span style="font-size:24px;color:var(--accent)"><em class="fas fa-truck-fast"></em></span><div><strong>Fast & reliable</strong><br><small class="muted">Quick dispatch on selected items</small></div></div>
+                <div style="display:flex;gap:12px;align-items:center;"><span style="font-size:24px;color:var(--accent)"><em class="fas fa-shield-halved"></em></span><div><strong>Secure checkout</strong><br><small class="muted">Protected shopping experience</small></div></div>
+                <div style="display:flex;gap:12px;align-items:center;"><span style="font-size:24px;color:var(--accent)"><em class="fas fa-headset"></em></span><div><strong>Friendly support</strong><br><small class="muted">We're here when you need us</small></div></div>
             </div>
         </section>
 
@@ -610,7 +745,7 @@
             </div>
 
             <div class="deal" style="align-items:stretch;">
-                <emmg src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80" alt="Deal product">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80" alt="Deal product">
                 <div class="content">
                     <h3>MacBook Air M2</h3>
                     <p class="muted">Thin, light and powerful — now with M2 performance.</p>
@@ -659,7 +794,7 @@
                     <div class="rating">★★★★★</div>
                     <p>"Fast shipping and excellent customer support. The product exceeded my expectations!"</p>
                     <div style="display:flex;align-items:center;gap:10px">
-                        <emmg src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
                         <div>
                             <div style="font-weight:700">Ava Martin</div>
                             <div class="muted" style="font-size:13px">Verified buyer</div>
@@ -671,7 +806,7 @@
                     <div class="rating">★★★★☆</div>
                     <p>"Great selection and the checkout was smooth. Will shop again."</p>
                     <div style="display:flex;align-items:center;gap:10px">
-                        <emmg src="https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=80&q=80" alt="avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+                        <img src="https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=80&q=80" alt="avatar" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
                         <div>
                             <div style="font-weight:700">Michael Lee</div>
                             <div class="muted" style="font-size:13px">Frequent buyer</div>
@@ -687,7 +822,7 @@
                 <h3 id="news-title">Stay in the loop</h3>
                 <p>Subscribe to get exclusive offers & new arrivals</p>
                 <form id="newsletterForm" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;" onsubmit="return false;">
-                    <emnput id="newsletterEmail" type="email" placeholder="Enter your email" aria-label="Email address" required>
+                    <input id="newsletterEmail" type="email" placeholder="Enter your email" aria-label="Email address" required>
                     <button class="btn btn-primary" id="subscribeBtn">Subscribe</button>
                 </form>
                 <div id="newsletterMsg" style="margin-top:10px;font-size:14px;display:none"></div>
@@ -873,7 +1008,7 @@
                 el.className = 'product';
                 el.innerHTML = `
                     ${p.badge ? `<div style="position:absolute;margin:12px"><span style="background:${p.badge.startsWith('-')? '#ff4757' : 'var(--success)'};color:white;padding:6px 8px;border-radius:8px;font-weight:700;font-size:12px">${p.badge}</span></div>` : ''}
-                    <emmg src="${p.img}" alt="${escapeHtml(p.title)}">
+                    <img src="${p.img}" alt="${escapeHtml(p.title)}">
                     <div class="product-body">
                         <h5>${escapeHtml(p.title)}</h5>
                         <div class="muted">${p.category}</div>
@@ -887,13 +1022,21 @@
                     </div>
                     <div class="product-footer">
                         <button class="add-btn" data-id="${p.id}"><em class="fas fa-cart-plus"></em> Add</button>
-                        <button class="wish-btn" aria-label="Add to wishlist"><em class="far fa-heart"></em></button>
+                        <button class="wish-btn" aria-label="Add to wishlist" title="Add to wishlist"><em class="far fa-heart"></em></button>
                     </div>
                 `;
                 productsGrid.appendChild(el);
             });
 
             // attach listeners to add buttons
+            productsGrid.querySelectorAll('.wish-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const icon = btn.querySelector('em');
+                    icon.classList.toggle('far');
+                    icon.classList.toggle('fas');
+                    btn.setAttribute('aria-label', icon.classList.contains('fas') ? 'Remove from wishlist' : 'Add to wishlist');
+                });
+            });
             productsGrid.querySelectorAll('.add-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const id = Number(btn.dataset.id);
@@ -965,7 +1108,9 @@
         const catMenuBtn = document.getElementById('catMenuBtn');
         catMenuBtn && catMenuBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('Use the category tiles below to filter — this is a demo.');
+            searchInput.value = '';
+            filterProducts('');
+            window.scrollTo({ top: document.getElementById('cat-title').offsetTop - 60, behavior: 'smooth' });
         });
 
         // --- Newsletter subscribe (demo) ---
@@ -991,6 +1136,7 @@
             // Target: 1 day from now (demo)
             const now = new Date();
             const target = new Date(now.getTime() + (24 * 60 + 36) * 60 * 1000); // 24h36m
+            let timer;
             function tick() {
                 const diff = target - new Date();
                 const days = Math.floor(diff / (24 * 3600 * 1000));
@@ -1004,7 +1150,7 @@
                 if (diff <= 0) clearInterval(timer);
             }
             tick();
-            const timer = setInterval(tick, 1000);
+            timer = setInterval(tick, 1000);
         })();
 
         // --- Small UI bindings ---
