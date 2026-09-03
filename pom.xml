@@ -65,7 +65,7 @@
     </distributionManagement>
 
     <build>
-        <finalName>myweb</finalName>
+        
 
         <plugins>
             <plugin>
