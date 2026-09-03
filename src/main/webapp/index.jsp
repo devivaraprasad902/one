@@ -1,31 +1,3 @@
-Yesterday 4:19 PM
-Pasted text.txt
-Document
-update code and give attractive front page
-
-Done. I updated your existing NexusShop code with a much more attractive premium front page, including:
-
-Modern hero section with stronger visual hierarchy
-“Shop smarter. Live better.” headline
-Premium product showcase card
-Shopping statistics
-Fast delivery / secure checkout / support strip
-Improved hover effects and card styling
-Better responsive mobile layout
-Fixed malformed <input> / <img> tags in the original
-Fixed the countdown timer issue
-Improved wishlist button interaction
-Kept your existing products, categories, search, cart and deal functionality
-
-The original file uses the NexusShop structure and existing product/category data.
-
-Download the updated HTML:
-
-Download NexusShop_Updated.html 
-
-NexusShop_Updated.html
-HTML
-
 <!doctype html>
 
 <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>MyShop — Modern E‑Commerce</title>
